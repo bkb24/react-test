@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async';
+import Home from './pages/home'
+import Content from './pages/content'
+import NotFound from './components/NotFound'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <HelmetProvider>
+                <Router>
+
+                    <header style={{
+                        marginBottom: '3rem'
+                    }}>
+                        <nav>
+                            <ul className="list">
+                                <li className="list-item">
+                                    <Link to="/">Home</Link>
+                                </li>
+                                <li className="list-item">
+                                    <Link to="/content/privacy.html">/content/privacy.html</Link>
+                                </li>
+                                <li className="list-item">
+                                    <Link to="/404">Regular 404</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
+
+                    <main style={{
+                        margin: '1rem 2rem'
+                    }}>
+                        <Switch>
+                            <Route path="/content/:contentPath" exact component={Content} />
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                            <Route component={NotFound} />
+                        </Switch>
+                    </main>
+
+                </Router>
+            </HelmetProvider>
+        </>
+    );
 }
 
 export default App;
