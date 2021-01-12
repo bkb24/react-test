@@ -7,20 +7,20 @@ import { useParams } from "react-router";
 const Content = () => {
     let { contentPath } = useParams();
 
-    const [page, setPage] = useState(null)
-    const [statusCode, setStatusCode] = useState(null)
+    const [page, setPage] = useState(null);
+    const [statusCode, setStatusCode] = useState(null);
 
     useEffect(() => {
         getPage(contentPath)
             .then(response => {
-                setStatusCode(response.status)
-                if (response.data) setPage(response.data)
+                setStatusCode(response.status);
+                if (response.data) setPage(response.data);
             });
 
         return () => {
-            setPage(null)
+            setPage(null);
         }
-    }, [contentPath])
+    }, [contentPath]);
 
     if (statusCode === 404) {
         return <NotFound message={`Content "${contentPath}" not found`} />

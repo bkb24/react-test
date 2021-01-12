@@ -4,13 +4,13 @@ import { getAll } from '../services/content-service'
 import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
-    const [pages, setPages] = useState([])
+    const [pages, setPages] = useState([]);
 
     useEffect(() => {
         getAll()
             .then(response => {
                 if (response.data && response.data.length) {
-                    setPages(response.data)
+                    setPages(response.data);
                 }
             });
     }, [])

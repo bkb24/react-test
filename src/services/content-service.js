@@ -1,4 +1,4 @@
-const path = 'data/content_1.json'
+const path = 'data/content_1.json';
 
 export const getPage = url => {
     return getPages()
@@ -37,7 +37,7 @@ export const getAll = () => {
 export const getPages = () => {
     return fetch(`${window.location.origin}/${path}`)
         .then(response => response.json())
-        .then(data => data.page ? data.page : null)
+        .then(data => data.page ? data.page : null);
 }
 
 const getPagesArray = data => {

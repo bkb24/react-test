@@ -3,11 +3,11 @@ import {
     Switch,
     Route,
     Link
-} from 'react-router-dom'
+} from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import Home from './pages/home'
-import Content from './pages/content'
-import NotFound from './components/NotFound'
+import Home from './pages/home';
+import Content from './pages/content';
+import NotFound from './components/NotFound';
 
 function App() {
     return (
